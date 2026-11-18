@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise For Ahmed 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(135deg,#fce4ec,#eee5ff,#dff4f4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #765b78;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.float {
+  position: absolute;
+  bottom: -40px;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 430px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.top {
+  font-family: 'Playfair Display',serif;
+  font-size: 18px;
+  color: #b47b9f;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 38px;
+  color: #a46e9e;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #987b9b;
+  margin-bottom: 38px;
+}
+
+.envelope-area {
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 800px;
+}
+
+.envelope {
+  width: 230px;
+  height: 145px;
+  position: relative;
+  background: #f4bcd5;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px #bb91b555;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f8d0e2;
+  clip-path: polygon(0 0,50% 58%,100% 0);
+  z-index: 4;
+  transform-origin: top;
+  transition: transform .7s;
+}
+
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #eaa6c8;
+  clip-path: polygon(0 100%,50% 43%,100% 100%);
+  z-index: 3;
+}
+
+.letter {
+  position: absolute;
+  width: 190px;
+  height: 135px;
+  background: #fffafc;
+  left: 20px;
+  bottom: 8px;
+  border-radius: 6px;
+  transition: .8s;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.letter span {
+  font-size: 27px;
+}
+
+.seal {
+  position: absolute;
+  top: 53px;
+  left: 96px;
+  z-index: 5;
+  font-size: 32px;
+  transition: .4s;
+}
+
+.envelope.open::before {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .letter {
+  transform: translateY(-115px);
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+
+.hint {
+  font-size: 13px;
+  margin-top: 12px;
+  color: #a17a9d;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .45; }
+}
+
+.card {
+  display: none;
+  background: rgba(255,255,255,.78);
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  padding: 30px 22px;
+  box-shadow: 0 15px 45px #a98cb633;
+  backdrop-filter: blur(12px);
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(30px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card h2 {
+  color: #b16f9c;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.card .big-heart {
+  font-size: 48px;
+  animation: beat 1.5s infinite;
+  display: inline-block;
+  margin: 8px;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+
+.message {
+  font-size: 16px;
+  line-height: 2.2;
+  color: #806b85;
+}
+
+.divider {
+  width: 65px;
+  height: 2px;
+  background: #e9b3d1;
+  margin: 18px auto;
+}
+
+button {
+  border: none;
+  background: linear-gradient(120deg,#dca9d0,#f2b9cd);
+  color: white;
+  padding: 13px 25px;
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 6px 15px #d8a9c655;
+  transition: .3s;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.extra {
+  display: none;
+  margin-top: 20px;
+  color: #a56e9b;
+  line-height: 2;
+  animation: appear .7s;
+}
+
+.footer {
+  margin-top: 28px;
+  font-size: 11px;
+  color: #ad8da9;
+  letter-spacing: 1px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background" id="background"></div>
+
+<div class="container">
+
+  <div class="top">A LITTLE SURPRISE ✨</div>
+
+  <h1>Ahmed 💗</h1>
+
+  <div class="subtitle">
+    في حاجة صغيرة مستنياك...
+  </div>
+
+  <div class="envelope-area" id="envelopeArea">
+    <div class="envelope" id="envelope" onclick="openGift()">
+      <div class="letter">
+        <span>💌</span>
+        <small style="color:#bd8aaa">For Ahmed</small>
+      </div>
+      <div class="seal">💗</div>
+    </div>
+  </div>
+
+  <div class="hint" id="hint">
+    دوس على الظرف وافتح مفاجأتك ♡
+  </div>
+
+  <div class="card" id="card">
+
+    <div class="big-heart">💗</div>
+
+    <h2>Hey Ahmed!</h2>
+
+    <div class="divider"></div>
+
+    <div class="message">
+      مش لازم يكون فيه مناسبة<br>
+      عشان نعمل حاجة حلوة لحد مميز ✨<br><br>
+
+      حبيت أعملك حاجة مختلفة<br>
+      تخليك تبتسم ولو للحظة.<br><br>
+
+      أتمنى أيامك تكون جميلة<br>
+      وقلبك دايمًا مرتاح وسعيد 🌷
+    </div>
+
+    <button onclick="showExtra()">
+      عندي ليك حاجة كمان 👀
+    </button>
+
+    <div class="extra" id="extra">
+      <div style="font-size:35px">🦋🌸✨</div>
+      خليك دايمًا مبتسم يا أحمد،<br>
+      لأنك تستاهل كل الحاجات الحلوة دي!<br>
+      <strong>Sending you a little happiness 💗</strong>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    MADE WITH A LITTLE LOVE ♡
+  </div>
+
+</div>
+
+<script>
+const background = document.getElementById("background");
+
+const symbols = ["♡","✦","💕","✨","🌸","🦋"];
+
+function createFloat() {
+  const item = document.createElement("div");
+  item.className = "float";
+  item.textContent = symbols[
+    Math.floor(Math.random() * symbols.length)
+  ];
+
+  item.style.left = Math.random() * 100 + "%";
+  item.style.fontSize = (14 + Math.random() * 18) + "px";
+  item.style.animationDuration = (6 + Math.random() * 7) + "s";
+
+  background.appendChild(item);
+
+  setTimeout(() => item.remove(), 14000);
+}
+
+setInterval(createFloat, 500);
+
+let opened = false;
+
+function openGift() {
+  if (opened) return;
+  opened = true;
+
+  document.getElementById("envelope").classList.add("open");
+
+  setTimeout(() => {
+    document.getElementById("envelopeArea").style.display = "none";
+    document.getElementById("hint").style.display = "none";
+    document.getElementById("card").style.display = "block";
+  }, 1100);
+}
+
+function showExtra() {
+  const extra = document.getElementById("extra");
+  extra.style.display = "block";
+
+  for (let i = 0; i < 18; i++) {
+    setTimeout(createFloat, i * 100);
+  }
+}
+</script>
+
+</body>
+</html
